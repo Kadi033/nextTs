@@ -1,0 +1,39 @@
+.blogContainer {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: white;
+    flex-grow: 1;
+  }
+  
+  .blogContainer h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+
+  }
+  
+  .blogPosts {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+  }
+  
+  .blogPosts li {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .blogPosts h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+  }
+  
+  .blogPosts p {
+    color: #555;
+  }
+  

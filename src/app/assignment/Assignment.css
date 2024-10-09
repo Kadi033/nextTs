@@ -1,0 +1,19 @@
+.task-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    color: white;
+    justify-content: center;
+}
+.Assignment {
+    border-collapse: collapse;
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 20px;   
+}
+
+.Assignment th, .Assignment td {
+    border:  1px solid #acc; 
+    padding: 12px;
+    text-align: left;
+}

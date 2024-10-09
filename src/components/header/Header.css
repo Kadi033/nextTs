@@ -1,0 +1,50 @@
+.headerContainer {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 70px;
+    flex-shrink: 0;
+  }
+  .leftSideContainer {
+    display: flex;
+    align-items: center;
+  }
+  .secondNavBar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 30px;
+    cursor: pointer;
+  }
+  .firstNavBar {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+  }
+  .firstNavBar > a {
+    text-decoration: unset;
+    color: white;
+    letter-spacing: 0.5px;
+    transition: all 0.25s;
+  }
+  .secondNavBar > a {
+    padding: 0.46rem 0.75rem;
+    text-decoration: unset;
+    color: white;
+    letter-spacing: 0.5px;
+    transition: all 0.25s;
+  }
+  .secondNavBar > a:hover {
+    transform: translateY(1px);
+    opacity: 0.8;
+  }
+  .firstNavBar > a:hover {
+    transform: translateY(1px);
+    opacity: 0.8;
+  }
+  

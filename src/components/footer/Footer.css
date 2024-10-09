@@ -1,0 +1,44 @@
+.footerContainer {
+    border-top: 1px solid rgba(255, 255, 255, 0.644);
+    padding: 20px;
+    margin-top: 20px;
+    flex-shrink: 0;
+  }
+  .footerContent {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+  }
+  .footerLogo {
+    display: flex;
+    justify-content: center;
+  }
+  .footerMenu {
+    display: flex;
+    gap: 60px;
+    margin-top: 10px;
+  }
+  .footerMenuBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column-gap: 0.75rem;
+    grid-row-gap: 0.75rem;
+  }
+  .footerMenuBox > h1 {
+    font-size: 24px;
+    color: white;
+  }
+  .footerMenuBox > a {
+    color: #8e8c87;
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+  .footerMenuBox > a:hover {
+    transform: translateY(-2px);
+    color: white;
+  }
+  
