@@ -17,6 +17,7 @@ function Header() {
           <Link href="/contact">Contact</Link>
           <Link href="/assignment">Assignment-3</Link>
           <Link href="/blog">Blog</Link>
+          <Link href="/product">Products</Link>
           <Link href="/profile">Profile</Link>
         </nav>
       </div>

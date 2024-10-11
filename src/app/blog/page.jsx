@@ -1,18 +1,27 @@
+"use client";
+import axios from "axios";
 import "./Blog.css";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 function Blog() {
-  const posts = [
-    { id: 1, title: 'Post 1', content: 'This is the first post.' },
-    { id: 2, title: 'Post 2', content: 'This is the second post.' },
-    { id: 3, title: 'Post 3', content: 'This is the third post.' },
-    { id: 4, title: 'Post 4', content: 'This is the fourth post.' },
-    { id: 5, title: 'Post 5', content: 'This is the fifth post.' },
-    { id: 6, title: 'Post 6', content: 'This is the sixth post.' },
-  ];
+  const [posts, setPosts] = useState([])
+  useEffect(() => {
+    async function getPost() {
+      try {
+        const response = await axios.get("https://dummyjson.com/posts");
+        setPosts(response.data.posts)
+      } catch (error) {
+        console.error(error);
+      }
+  }
+  getPost()
+  }, [])
 
   return (
     <div className="blogContainer">
       <h2 className="blogTitle">Blog Posts</h2>
+      <Link href={`/blog/${posts.id}`}>
       <ul className="blogPosts">
         {posts.map((post) => (
           <li key={post.id} className="blogPost">
@@ -21,6 +30,8 @@ function Blog() {
           </li>
         ))}
       </ul>
+      </Link>
+      
     </div>
   );
 }
