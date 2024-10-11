@@ -1,5 +1,5 @@
 "use client";
-import Product from "../components/products/product";
+import Product from "../components/products/ProductCard";
 import chatbot from "../../public/chatbot.jpg";
 import designer from "../../public/designer.jpg";
 import developer from "../../public/developer.jpg";
