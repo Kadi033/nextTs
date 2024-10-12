@@ -1,5 +1,4 @@
 "use client";
-import Product from "../components/products/ProductCard";
 import chatbot from "../../public/chatbot.jpg";
 import designer from "../../public/designer.jpg";
 import developer from "../../public/developer.jpg";
@@ -10,7 +9,10 @@ import health from "../../public/health.jpg";
 import marketing from "../../public/marketing.jpg";
 import social from "../../public/social.webp";
 import "./page.css";
-const products = [
+import MainElement from "../components/mainElement/MainElement";
+
+
+const mainInfo = [
   {
     id: 1,
     title: "Designer AI",
@@ -83,8 +85,8 @@ export default function Home() {
   return (
     <div className="mainContainer">
     <div className="productGrid">
-      {products.map((product) => (
-        <Product
+      {mainInfo.map((product) => (
+        <MainElement
           key={product.id}
           title={product.title}
           description={product.description}

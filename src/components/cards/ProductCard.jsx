@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import "./product.css";
+import "./card.css";
 
-export default function ProductCard({ title, price, image, description }) {
+export default function Card({ title, price, image, description }) {
   return (
      
     <div className="productcard">

@@ -1,6 +1,6 @@
 "use client";
 import Loading from "@/src/components/loading/Loading";
-import ProductCard from "@/src/components/products/ProductCard";
+import ProductCard from "@/src/components/cards/ProductCard";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
