@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     padding: 20px 70px;
-    flex-shrink: 0;
   }
   .leftSideContainer {
     display: flex;

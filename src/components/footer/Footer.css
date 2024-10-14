@@ -2,13 +2,14 @@
     border-top: 1px solid rgba(255, 255, 255, 0.644);
     padding: 20px;
     margin-top: 20px;
-    flex-shrink: 0;
+    
   }
   .footerContent {
     width: 100%;
     margin: 0 auto;
     display: grid;
     justify-content: center;
+    
   }
   .footerLogo {
     display: flex;

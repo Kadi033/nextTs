@@ -1,34 +1,51 @@
-"use client";
-import Loading from "@/src/components/loading/Loading";
 import ProductCard from "@/src/components/cards/ProductCard";
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import "./products.css"
-const Page = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    async function getProduct() {
-      try {
-        const productResponse = await axios.get(
-          "https://dummyjson.com/products"
-        );
-        setProducts(productResponse.data.products);
-      } catch (error) {
-        console.error(error);
-      }finally {
-        setLoading(false)
-      }
+import "./products.css";
+import Sort from "@/src/components/sort/Sort";
+import Search from "@/src/components/search/Search";
+
+async function getProduct(query, sort) {
+  let url = "https://dummyjson.com/products";
+
+  if (query) {
+    url = `https://dummyjson.com/products/search?q=${query}`;
+  } else if (sort === "asc") {
+    url += "?sortBy=title&order=asc";
+  } else if (sort === "priceLowHigh") {
+    url += "?sortBy=price&order=asc";
+  } else if (sort === "priceHighLow") {
+    url += "?sortBy=price&order=desc";
+  }
+
+  try {
+    const productResponse = await axios.get(url);
+    const products = productResponse.data.products;
+
+    if (query) {
+      return products.filter((product) =>
+        product.title.toLowerCase().startsWith(query.toLowerCase())
+      );
     }
-    getProduct();
-  }, []);
+
+    return products;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+export default async function Page({ searchParams }) {
+  const { q: query, sort } = searchParams || {};
+  const products = await getProduct(query, sort);
+
   return (
-    <main className={`outer-container ${loading ? "loading" : ""}`}>
+    <main className="outer-container">
+      <Search />
+      <Sort className="sort" />
+      <h1>Products</h1>
       <div className="container product-card">
-        {loading ? (
-          <Loading /> 
-        ) : products.length > 0 ? (
+        {products.length > 0 ? (
           products.map((product) => (
             <Link href={`/product/${product.id}`} key={product.id}>
               <ProductCard
@@ -40,10 +57,9 @@ const Page = () => {
             </Link>
           ))
         ) : (
-          <p>No products found.</p> 
+          <p>No products found.</p>
         )}
       </div>
     </main>
   );
-};
-export default Page;
+}

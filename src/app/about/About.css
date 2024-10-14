@@ -1,7 +1,6 @@
 .about-container {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
   }
   .about-top-content {
     margin: 20px 0 20px 0;
@@ -22,6 +21,8 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
   .about-box {
     position: relative;

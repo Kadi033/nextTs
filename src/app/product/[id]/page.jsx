@@ -1,26 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import "./singleProduct.css"
-export default function Prod({}) {
-  const [prod, setProd] = useState([null]);
-  const prodId = 1;
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const prodRes = await axios.get(
-          `https://dummyjson.com/product/${prodId}`
-        );
-        setProd(prodRes.data);
-        console.log(prodRes);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchProduct();
-  }, []);
 
+
+async function fetchProduct(id) {
+  try {
+    const prodRes = await axios.get(
+      `https://dummyjson.com/product/${id}`
+    );
+    return prodRes.data
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export default async function Prod({params}) {
+  const prod = await fetchProduct(params.id)
   return (
     <div className="main-card">
       <h1>{prod.brand}</h1>
