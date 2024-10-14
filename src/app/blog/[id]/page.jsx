@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import "./posts.css"
 async function fetchPost(id) {
   try {
     const res = await axios.get(`https://dummyjson.com/posts/${id}`);

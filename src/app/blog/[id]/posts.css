@@ -4,7 +4,7 @@
     margin: 0 auto;
     color: white;
     flex-grow: 1;
-    
+    border: 3px solid white;
   }
   
   .blogContainer h2 {
@@ -14,27 +14,27 @@
 
   }
   
-  .blogPosts {
+  .blogPost {
     list-style-type: none;
     padding: 0;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
   }
   
-  .blogPosts li {
+  .blogPost div {
     margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
   }
   
-  .blogPosts h3 {
+  .blogPost h1 {
     margin-bottom: 10px;
-    font-size: 1.5em;
+    padding-bottom: 20px;
   }
   
-  .blogPosts p {
+  .blogPost p {
     color: #555;
+    padding-bottom: 20px;
   }
   

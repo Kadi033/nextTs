@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import Button from "../button/Button";
 import "./card.css";
 
 export default function Card({ title, price, image, description }) {
@@ -13,9 +14,7 @@ export default function Card({ title, price, image, description }) {
         <h3 className="product-title">{title}</h3>
         <p className="product-desc">{description}</p>
         <p className="product-price">{price} $</p>
-        <button type="button" className="product-button">
-          Add to Cart
-        </button>
+        <Button text={"Add To Card"} width={150} />
       </div>
     </div>
   );

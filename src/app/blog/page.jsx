@@ -18,20 +18,20 @@ export default async function Blog() {
   return (
     <div className="blogContainer">
       <h2 className="blogTitle">Blog Posts</h2>
-      <ul className="blogPosts">
+      <div className="blogPosts">
         {posts.length > 0 ? (
           posts.map((post) => (
-            <li key={post.id} className="blogPost">
+            <div key={post.id} className="blogPost">
               <Link href={`/blog/${post.id}`}> 
                 <h3 className="postTitle">{post.title}</h3>
                 <p className="postContent">{post.body}</p> 
               </Link>
-            </li>
+            </div>
           ))
         ) : (
           <p>No posts available.</p> // უკეთესი ტექსტი
         )}
-      </ul>
+      </div>
     </div>
   );
 }

@@ -43,7 +43,7 @@ export default async function Page({ searchParams }) {
   return (
     <main className="outer-container">
       <Search />
-      <Sort className="sort" />
+      <Sort />
       <h1>Products</h1>
       <div className="container product-card">
         {products.length > 0 ? (
