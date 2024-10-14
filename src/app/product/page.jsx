@@ -9,7 +9,7 @@ async function getProduct(query, sort) {
   let url = "https://dummyjson.com/products";
 
   if (query) {
-    url = `https://dummyjson.com/products/search?q=${query}`;
+    url = `https://dummyjson.com/products/search?q=${query}`; // &sortBy=price&order=asc გადაბმა 
   } else if (sort === "asc") {
     url += "?sortBy=title&order=asc";
   } else if (sort === "priceLowHigh") {
@@ -21,14 +21,16 @@ async function getProduct(query, sort) {
   try {
     const productResponse = await axios.get(url);
     const products = productResponse.data.products;
-
+    
+    
     if (query) {
       return products.filter((product) =>
         product.title.toLowerCase().startsWith(query.toLowerCase())
       );
     }
-
+   
     return products;
+    
   } catch (error) {
     console.error(error);
     return [];
@@ -38,7 +40,6 @@ async function getProduct(query, sort) {
 export default async function Page({ searchParams }) {
   const { q: query, sort } = searchParams || {};
   const products = await getProduct(query, sort);
-
   return (
     <main className="outer-container">
       <Search />
@@ -57,7 +58,7 @@ export default async function Page({ searchParams }) {
             </Link>
           ))
         ) : (
-          <p>No products found.</p>
+          <div className="no-prod">No products found.</div>
         )}
       </div>
     </main>

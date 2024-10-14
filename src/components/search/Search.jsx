@@ -5,13 +5,13 @@ import { debounce } from "lodash";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
-  const router = useRouter();
+  const searchRouter = useRouter();
 
   const handleSearchDebounced = debounce((term) => {
     if (term) {
-      router.push(`?q=${term}`);
+      searchRouter.push(`?q=${term}`);
     } else {
-      router.push("/product");
+      searchRouter.push("/product");
     }
   }, 500);
 

@@ -3,18 +3,18 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 function Sort() {
-  const router = useRouter();
+  const sortRouter = useRouter();
 
   function sortByTitle() {
-    router.push("/product?sort=asc");
+    sortRouter.push("/product?sort=asc");
 }
 
 function sortByPriceLowHigh() {
-    router.push("/product?sort=priceLowHigh");
+    sortRouter.push("/product?sort=priceLowHigh");
 }
 
 function sortByPriceHighLow() {
-    router.push("/product?sort=priceHighLow");
+    sortRouter.push("/product?sort=priceHighLow");
 }
 
 return (

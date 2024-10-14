@@ -77,6 +77,14 @@
   padding: 10px 0 10px 10px;
   height: 53px;
 }
+.no-prod {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  width: 630px;
+  height: 300px;
+}
 @media screen and (max-width: 1200px) {
   .container {
     grid-template-columns: auto auto auto;

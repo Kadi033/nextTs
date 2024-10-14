@@ -1,39 +1,37 @@
-"use client";
 import axios from "axios";
 import "./Blog.css";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
-function Blog() {
-  const [posts, setPosts] = useState([])
-  useEffect(() => {
-    async function getPost() {
-      try {
-        const response = await axios.get("https://dummyjson.com/posts");
-        setPosts(response.data.posts)
-      } catch (error) {
-        console.error(error);
-      }
+async function getPosts() {
+  try {
+    const response = await axios.get("https://dummyjson.com/posts");
+    return response.data.posts; 
+  } catch (error) {
+    console.error(error);
+    return [];
   }
-  getPost()
-  }, [])
+}
+
+export default async function Blog() {
+  const posts = await getPosts();
 
   return (
     <div className="blogContainer">
       <h2 className="blogTitle">Blog Posts</h2>
-      <Link href={`/blog/${posts.id}`}>
       <ul className="blogPosts">
-        {posts.map((post) => (
-          <li key={post.id} className="blogPost">
-            <h3 className="postTitle">{post.title}</h3>
-            <p className="postContent">{post.content}</p>
-          </li>
-        ))}
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <li key={post.id} className="blogPost">
+              <Link href={`/blog/${post.id}`}> 
+                <h3 className="postTitle">{post.title}</h3>
+                <p className="postContent">{post.body}</p> 
+              </Link>
+            </li>
+          ))
+        ) : (
+          <p>No posts available.</p> // უკეთესი ტექსტი
+        )}
       </ul>
-      </Link>
-      
     </div>
   );
 }
-
-export default Blog;

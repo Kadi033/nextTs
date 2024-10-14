@@ -1,33 +1,28 @@
-"use client";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 
-export default function Post({}) {
-  const [pos, setPos] = useState([null]);
-  const postId = 1;
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const res = await axios.get(`https://dummyjson.com/posts/${postId}`);
-        setPos(res.data);
-        console.log(res);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchPosts();
-  }, []);
+async function fetchPost(id) {
+  try {
+    const res = await axios.get(`https://dummyjson.com/posts/${id}`);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+    return null; 
+  }
+}
+
+export default async function Post({ params }) {
+  const post = await fetchPost(params.id); 
 
   return (
     <div className="blogContainer">
       <h2 className="blogTitle">Blog Posts</h2>
-      {pos ? (
-        <ul className="blogPosts">
-          <h1>{pos.title}</h1>
-          <p>{pos.body}</p>
-        </ul>
+      {post ? ( 
+        <div className="blogPost">
+          <h1>{post.title}</h1>
+          <p>{post.body}</p>
+        </div>
       ) : (
-        <p>loading...</p>
+        <p>Loading...</p> 
       )}
     </div>
   );
