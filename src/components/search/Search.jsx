@@ -11,7 +11,7 @@ export default function Search() {
     } else {
       searchRouter.push("/product");
     }
-  }, 1000);
+  }, 500);
 
   const handleInputChange = (event) => {
     const inputValue = event.target.value;
