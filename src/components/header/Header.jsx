@@ -25,7 +25,9 @@ function Header() {
       <nav className="secondNavBar">
         <a href="/">What’s New</a>
         <a href="/">Help</a>
-        <Button text="Contact Us" width="120px" />
+        <a href="/api/auth/logout">
+          <Button text="Logout" width="120px" />
+        </a>
       </nav>
     </div>
   );

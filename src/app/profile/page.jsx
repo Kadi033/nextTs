@@ -1,36 +1,46 @@
-import Image from "next/image";
 import "./Profile.css";
-import man from '../../../public/designer.jpg'
-function Profile() {
-  const user = {
-    firstName: "John",
-    lastName: "Doe",
-    email: "johndoe@example.com",
-    photoUrl: man,
-  };
+import { getSession } from "@auth0/nextjs-auth0";
+
+export default async function Profile() {
+  const { user } = (await getSession()) ?? {};
 
   return (
-    <div className="profileContainer">
-      <h2 className="profileTitle">Profile</h2>
-      <form className="profileForm">
-        <div className="profilePhoto">
-          <Image src={user.photoUrl} alt="Profile" />
+    <section className="profile-section">
+      <div className="profile-container">
+        <h1 className="profile-title">Profile</h1>
+        <p className="profile-intro">I`m a creative PHP web developer</p>
+        <div className="profile-layout">
+          <div className="profile-about">
+            <h4>About me</h4>
+            <p>
+              I am an all-round web developer. I am a senior programmer with
+              good knowledge of front-end techniques. Vitae sapien pellentesque
+              habitant morbi tristique senectus et. Aenean sed adipiscing diam
+              donec adipiscing tristique risus.
+            </p>
+          </div>
+          <div className="profile-image">
+            {user && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={user.picture} alt={user.name} className="profile-pic" />
+            )}
+          </div>
+          <div className="profile-details">
+            <h4>Details</h4>
+            <div>
+              <span className="bold-text">
+                Name:
+                {user && <p>{user.name}</p>}
+              </span>
+
+              <span className="bold-text">
+                Email:
+                {user && <p>{user.email} </p>}
+              </span>
+            </div>
+          </div>
         </div>
-        <div className="profileField">
-          <label>First Name:</label>
-          <input type="text" value={user.firstName} readOnly />
-        </div>
-        <div className="profileField">
-          <label>Last Name:</label>
-          <input type="text" value={user.lastName} readOnly />
-        </div>
-        <div className="profileField">
-          <label>Email:</label>
-          <input type="email" value={user.email} readOnly />
-        </div>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 }
-
-export default Profile;
