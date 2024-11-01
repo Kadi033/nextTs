@@ -1,8 +1,8 @@
 import "./globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 
 export const metadata = {
   title: "Create Next App",
