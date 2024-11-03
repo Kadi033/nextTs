@@ -1,9 +1,14 @@
+"use client";
 import "./Footer.css";
 import footerImage from "../../../public/66edb11441e16f9cf22b0d72_Entropy®.svg";
 import Image from "next/image";
+import { useTheme } from "@/src/provider/ThemeProvider";
 function Footer() {
+  const { theme } = useTheme();
   return (
-    <div className="footerContainer">
+    <div className={`footerContainer ${
+      theme === "dark" ? "bg-gray-800 text-white" : "bg-slate-100 text-black"
+    }`}>
       <div className="footerContent">
         <div className="footerLogo">
             <Image src={footerImage} alt="/" />

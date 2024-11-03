@@ -15,11 +15,17 @@
     gap: 14px;
   }
   .logo {
-    width: 40px;
-    height: 40px;
-    margin-right: 30px;
-    cursor: pointer;
-  }
+  width: 40px;
+  height: 40px;
+  margin-right: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.kk {
+  object-fit: contain;
+}
   .firstNavBar {
     display: flex;
     align-items: center;
@@ -27,14 +33,12 @@
   }
   .firstNavBar > a {
     text-decoration: unset;
-    color: white;
     letter-spacing: 0.5px;
     transition: all 0.25s;
   }
   .secondNavBar > a {
     padding: 0.46rem 0.75rem;
     text-decoration: unset;
-    color: white;
     letter-spacing: 0.5px;
     transition: all 0.25s;
   }

@@ -3,6 +3,7 @@ import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import { ThemeProvider } from "../provider/ThemeProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,11 +13,13 @@ function RootLayout({ children }) {
   return (
     <html lang="en">
       <UserProvider>
+      <ThemeProvider>
         <body>
           <Header />
           {children}
           <Footer />
         </body>
+        </ThemeProvider>
       </UserProvider>
     </html>
   );

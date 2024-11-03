@@ -10,6 +10,7 @@ import marketing from "../../public/marketing.jpg";
 import social from "../../public/social.webp";
 import "./page.css";
 import MainElement from "../components/mainElement/MainElement";
+import { useTheme } from "../provider/ThemeProvider";
 
 
 const mainInfo = [
@@ -78,23 +79,25 @@ const mainInfo = [
   },
 ];
 export default function Home() {
+  const { theme } = useTheme(); 
+
   const handleAddToCart = (productsId) => {
     console.log(`Product ${productsId} added to cart.`);
   };
 
   return (
-    <div className="mainContainer">
-    <div className="productGrid">
-      {mainInfo.map((product) => (
-        <MainElement
-          key={product.id}
-          title={product.title}
-          description={product.description}
-          image={product.image}
-          onAddToCart={() => handleAddToCart(product.id)}
-        />
-      ))}
+    <div className={`mainContainer ${theme === "dark" ? "bg-gray-800" : "bg-slate-100"}`}>
+      <div className="productGrid">
+        {mainInfo.map((product) => (
+          <MainElement
+            key={product.id}
+            title={product.title}
+            description={product.description}
+            image={product.image}
+            onAddToCart={() => handleAddToCart(product.id)}
+          />
+        ))}
+      </div>
     </div>
-  </div>
   );
 }
