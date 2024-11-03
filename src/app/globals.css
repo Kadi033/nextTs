@@ -14,32 +14,12 @@ body {
   justify-content: space-between;
   min-height: 100vh;
 }
-body.light {
+.light {
   background-color: white;
   color: black;
 }
 
-body.dark {
+.dark {
   background-color: black;
   color: white;
-}
-
-.layoutMainContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-header {
-  background-color: #000;
-  color: white;
-  padding: 10px 20px;
-}
-
-footer {
-  background-color: #000;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
 }

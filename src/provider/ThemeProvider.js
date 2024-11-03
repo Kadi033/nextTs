@@ -9,43 +9,50 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     try {
       const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
       if (savedTheme) {
         setTheme(savedTheme);
-        document.documentElement.classList.toggle("dark", savedTheme === "dark");
       } else {
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const initialTheme = prefersDark ? "dark" : "light";
-        setTheme(initialTheme);
-        document.documentElement.classList.toggle("dark", initialTheme === "dark");
+        setTheme(prefersDark ? "dark" : "light");
       }
     } catch (error) {
-      console.error("Failed to access localStorage:", error);
+      console.error("Error accessing localStorage:", error);
     }
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleSystemThemeChange = (e) => {
-      const newTheme = e.matches ? "dark" : "light";
-      setTheme(newTheme);
-      document.documentElement.classList.toggle("dark", newTheme === "dark");
-    };
-
-    mediaQuery.addEventListener("change", handleSystemThemeChange);
-    return () => mediaQuery.removeEventListener("change", handleSystemThemeChange);
   }, []);
+
+  useEffect(() => {
+    if (theme === "system") {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+      const handleSystemThemeChange = (e) => {
+        const newTheme = e.matches ? "dark" : "light";
+        setTheme(newTheme);
+        localStorage.setItem("theme", "system"); 
+      };
+
+      mediaQuery.addEventListener("change", handleSystemThemeChange);
+
+      return () => {
+        mediaQuery.removeEventListener("change", handleSystemThemeChange);
+      };
+    }
+  }, [theme]); 
 
   const toggleTheme = (newTheme) => {
     setTheme(newTheme);
     try {
       localStorage.setItem("theme", newTheme);
-      document.documentElement.classList.toggle("dark", newTheme === "dark");
     } catch (error) {
-      console.error("Failed to set item in localStorage:", error);
+      console.error("Error setting theme in localStorage:", error);
     }
   };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      <div className={theme === "dark" ? "dark" : "light"}>
+        {children}
+        </div>
     </ThemeContext.Provider>
   );
 };

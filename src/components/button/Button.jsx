@@ -1,5 +1,4 @@
 "use client";
-import "./Button.css";
 import { useTheme } from "@/src/provider/ThemeProvider";
 
 function Button({ width, text }) {
