@@ -60,7 +60,7 @@ export const ThemeProvider = ({ children }) => {
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error("useTheme უნდა იყოს გამოყენებული ThemeProvider-ში");
+    throw new Error("useTheme უნდა იყოს გამოყენებულაი ThemeProvider-ში");
   }
   return context;
 };

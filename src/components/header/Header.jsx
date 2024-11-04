@@ -4,9 +4,13 @@ import logo from "../../../public/download.svg";
 import Button from "../button/Button";
 import Image from "next/image";
 import { useTheme } from "@/src/provider/ThemeProvider";
+import { useState } from "react";
 
 export default function Header() {
   const { toggleTheme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
   return (
     <div
@@ -17,7 +21,7 @@ export default function Header() {
           <Image
             src={logo}
             alt="/"
-            className="object-contain transition duration-300  brightness-200 dark:brightness-0 invert "
+            className="object-contain transition duration-300 brightness-200 dark:brightness-0 invert"
           />
         </div>
         <nav className="flex items-center gap-10">
@@ -80,33 +84,45 @@ export default function Header() {
           Help
         </a>
         <a href="/api/auth/logout">
-          <Button text="Logout" width="120px" />
+          <Button text="Logout" width="100px" />
         </a>
-        <div className="flex space-x-2">
+
+        <div className="relative inline-block text-left">
           <button
-            onClick={() => toggleTheme("light")}
-            className={`p-2 dark:text-white`}
+            onClick={toggleDropdown}
+            className="p-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded"
           >
-            Light
+            Theme
           </button>
-          <button
-            onClick={() => toggleTheme("dark")}
-            className={`p-2 dark:text-white`}
-          >
-            Dark
-          </button>
-          <button
-            onClick={() => {
-              const newTheme = window.matchMedia("(prefers-color-scheme: dark)")
-                .matches
-                ? "dark"
-                : "light";
-              toggleTheme(newTheme);
-            }}
-            className={`p-2 dark:text-white`}
-          >
-            System
-          </button>
+          {isOpen && (
+            <div className="absolute right-[1px] mt-2 w-32 bg-white dark:bg-gray-800 shadow-lg rounded">
+              <button
+                onClick={() => toggleTheme("light")}
+                className="block w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white"
+              >
+                Light
+              </button>
+              <button
+                onClick={() => toggleTheme("dark")}
+                className="block w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white"
+              >
+                Dark
+              </button>
+              <button
+                onClick={() => {
+                  const newTheme = window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                  ).matches
+                    ? "dark"
+                    : "light";
+                  toggleTheme(newTheme);
+                }}
+                className="block w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white"
+              >
+                System
+              </button>
+            </div>
+          )}
         </div>
       </nav>
     </div>

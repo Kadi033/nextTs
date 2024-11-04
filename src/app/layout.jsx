@@ -13,7 +13,7 @@ export const metadata = {
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="flex flex-col justify-between min-h-screen font-sans transition-colors duration-300 bg-black text-white dark:bg-black dark:text-white">
+      <body className="flex flex-col justify-between font-sans transition-colors duration-300 bg-black text-white dark:bg-black dark:text-white">
         <UserProvider>
           <ThemeProvider>
             <Header />

@@ -1,4 +1,3 @@
-"use client";
 import chatbot from "../../public/chatbot.jpg";
 import designer from "../../public/designer.jpg";
 import developer from "../../public/developer.jpg";
@@ -8,9 +7,7 @@ import gaming from "../../public/gaming.jpg";
 import health from "../../public/health.jpg";
 import marketing from "../../public/marketing.jpg";
 import social from "../../public/social.webp";
-import "./page.css";
 import MainElement from "../components/mainElement/MainElement";
-import { useTheme } from "../provider/ThemeProvider";
 
 const mainInfo = [
   {
@@ -45,7 +42,7 @@ const mainInfo = [
     id: 5,
     title: "Gaming AI",
     description:
-      "Procedural Content Generation: AI algorithms that automatically create game content, such as levels or characters.",
+      "Procedural Content Generation: AI algorithms that automatically create game content, such as levels.",
     image: gaming,
   },
   {
@@ -77,27 +74,17 @@ const mainInfo = [
     image: marketing,
   },
 ];
+
 export default function Home() {
-  const { theme } = useTheme();
-
-  const handleAddToCart = (productsId) => {
-    console.log(`Product ${productsId} added to cart.`);
-  };
-
   return (
-    <div
-      className={`mainContainer ${
-        theme === "dark" ? "bg-gray-800" : "bg-slate-100"
-      }`}
-    >
-      <div className="productGrid">
+    <div className="flex flex-col justify-center items-center py-10 transition-colors duration-300 bg-slate-100 text-black dark:bg-gray-800 dark:text-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-full p-5">
         {mainInfo.map((product) => (
           <MainElement
             key={product.id}
             title={product.title}
             description={product.description}
             image={product.image}
-            onAddToCart={() => handleAddToCart(product.id)}
           />
         ))}
       </div>
