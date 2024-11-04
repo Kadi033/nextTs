@@ -12,7 +12,6 @@ import "./page.css";
 import MainElement from "../components/mainElement/MainElement";
 import { useTheme } from "../provider/ThemeProvider";
 
-
 const mainInfo = [
   {
     id: 1,
@@ -79,14 +78,18 @@ const mainInfo = [
   },
 ];
 export default function Home() {
-  const { theme } = useTheme(); 
+  const { theme } = useTheme();
 
   const handleAddToCart = (productsId) => {
     console.log(`Product ${productsId} added to cart.`);
   };
 
   return (
-    <div className={`mainContainer ${theme === "dark" ? "bg-gray-800" : "bg-slate-100"}`}>
+    <div
+      className={`mainContainer ${
+        theme === "dark" ? "bg-gray-800" : "bg-slate-100"
+      }`}
+    >
       <div className="productGrid">
         {mainInfo.map((product) => (
           <MainElement

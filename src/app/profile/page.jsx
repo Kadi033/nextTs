@@ -1,3 +1,4 @@
+import Image from "next/image";
 import "./Profile.css";
 import { getSession } from "@auth0/nextjs-auth0";
 
@@ -8,7 +9,7 @@ export default async function Profile() {
     <section className="profile-section">
       <div className="profile-container">
         <h1 className="profile-title">Profile</h1>
-        <p className="profile-intro">I`m a creative PHP web developer</p>
+        <p className="profile-intro">I`m a creative Next web developer</p>
         <div className="profile-layout">
           <div className="profile-about">
             <h4>About me</h4>
@@ -21,8 +22,13 @@ export default async function Profile() {
           </div>
           <div className="profile-image">
             {user && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={user.picture} alt={user.name} className="profile-pic" />
+              <Image
+                width={200}
+                height={200}
+                src={user.picture}
+                alt={user.name}
+                className="profile-pic"
+              />
             )}
           </div>
           <div className="profile-details">

@@ -9,7 +9,9 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     try {
       const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
 
       if (savedTheme) {
         setTheme(savedTheme);
@@ -17,42 +19,40 @@ export const ThemeProvider = ({ children }) => {
         setTheme(prefersDark ? "dark" : "light");
       }
     } catch (error) {
-      console.error("Error accessing localStorage:", error);
+      console.error("შეცდომა localStorage-ზე წვდომისას:", error);
     }
   }, []);
 
   useEffect(() => {
-    if (theme === "system") {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-      const handleSystemThemeChange = (e) => {
+    const handleSystemThemeChange = (e) => {
+      if (theme === "system") {
         const newTheme = e.matches ? "dark" : "light";
         setTheme(newTheme);
-        localStorage.setItem("theme", "system"); 
-      };
+        localStorage.setItem("theme", newTheme);
+      }
+    };
 
-      mediaQuery.addEventListener("change", handleSystemThemeChange);
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
 
-      return () => {
-        mediaQuery.removeEventListener("change", handleSystemThemeChange);
-      };
-    }
-  }, [theme]); 
+    return () => {
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    };
+  }, []);
 
   const toggleTheme = (newTheme) => {
     setTheme(newTheme);
     try {
       localStorage.setItem("theme", newTheme);
     } catch (error) {
-      console.error("Error setting theme in localStorage:", error);
+      console.error("შეცდომით თემის დაყენებაში localStorage-ში", error);
     }
   };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={theme === "dark" ? "dark" : "light"}>
-        {children}
-        </div>
+      <div className={theme === "dark" ? "dark" : "light"}>{children}</div>
     </ThemeContext.Provider>
   );
 };
@@ -60,7 +60,7 @@ export const ThemeProvider = ({ children }) => {
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
+    throw new Error("useTheme უნდა იყოს გამოყენებული ThemeProvider-ში");
   }
   return context;
 };

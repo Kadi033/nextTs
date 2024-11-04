@@ -1,9 +1,9 @@
-import "./globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import { ThemeProvider } from "../provider/ThemeProvider";
+import "./globals.css"
 
 export const metadata = {
   title: "Create Next App",
@@ -13,7 +13,7 @@ export const metadata = {
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="flex flex-col justify-between min-h-screen font-sans transition-colors duration-300 bg-black text-white dark:bg-black dark:text-white">
         <UserProvider>
           <ThemeProvider>
             <Header />
