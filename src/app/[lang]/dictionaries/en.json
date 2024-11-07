@@ -1,0 +1,23 @@
+{
+  "products": {
+    "cart": "Add to Cart"
+  },
+  "Designer AI": "Designer AI",
+  "Developer AI": "Developer AI",
+  "Engineering AI": "Engineering AI",
+  "Chatbot AI": "Chatbot AI",
+  "Gaming AI": "Gaming AI",
+  "Health AI": "Health AI",
+  "Financial AI": "Financial AI",
+  "Social Media AI": "Social Media AI",
+  "Marketing AI": "Marketing AI",
+  "Graphic Design AI: Tools that assist in creating visual content (e.g., Canva, Adobe Sensei).": "Graphic Design AI: Tools that assist in creating visual content (e.g., Canva, Adobe Sensei).",
+  "Code Generation AI: Tools that assist developers by generating code based on user input (e.g., GitHub Copilot).": "Code Generation AI: Tools that assist developers by generating code based on user input (e.g., GitHub Copilot).",
+  "Predictive Maintenance AI: AI systems used in manufacturing to predict equipment failures (e.g., GE's Predix).": "Predictive Maintenance AI: AI systems used in manufacturing to predict equipment failures (e.g., GE's Predix).",
+  "Conversational Agents: AI systems that interact with users via text or voice, providing assistance or information.": "Conversational Agents: AI systems that interact with users via text or voice, providing assistance or information.",
+  "Procedural Content Generation: AI algorithms that automatically create game content, such as levels.": "Procedural Content Generation: AI algorithms that automatically create game content, such as levels.",
+  "Diagnostic AI: Tools that assist in diagnosing diseases based on medical data.": "Diagnostic AI: Tools that assist in diagnosing diseases based on medical data.",
+  "Fraud Detection: AI systems that analyze transactions to identify potentially fraudulent activity.": "Fraud Detection: AI systems that analyze transactions to identify potentially fraudulent activity.",
+  "Content Moderation: AI that identifies and removes inappropriate content on social media platforms.": "Content Moderation: AI that identifies and removes inappropriate content on social media platforms.",
+  "Predictive Analytics for Marketing: AI that analyzes data to predict consumer behavior and marketing effectiveness.": "Predictive Analytics for Marketing: AI that analyzes data to predict consumer behavior and marketing effectiveness."
+}

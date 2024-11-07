@@ -1,0 +1,23 @@
+{
+  "products": {
+    "cart": "კარტზე დამატება"
+  },
+  "Designer AI": "დიზაინერის AI",
+  "Developer AI": "დეველოპერის AI",
+  "Engineering AI": "ინჟინერის AI",
+  "Chatbot AI": "ჩატბოტი AI",
+  "Gaming AI": "თამაშების AI",
+  "Health AI": "ჯანმრთელობის AI",
+  "Financial AI": "ფინანსური AI",
+  "Social Media AI": "სოციალური მედიის AI",
+  "Marketing AI": "მარკეტინგის AI",
+  "Graphic Design AI: Tools that assist in creating visual content (e.g., Canva, Adobe Sensei).": "გრაფიკული დიზაინის AI: ინსტრუმენტები, რომლებიც ეხმარება ვიზუალი შინაარსის შექმნაში (მაგ., Canva, Adobe Sensei).",
+  "Code Generation AI: Tools that assist developers by generating code based on user input (e.g., GitHub Copilot).": "კოდის გენერაციის AI: ინსტრუმენტები, რომლებიც ეხმარება დეველოპერებს კოდის გენერირებაში მომხმარებლის მონაცემების საფუძველზე (მაგ., GitHub Copilot).",
+  "Predictive Maintenance AI: AI systems used in manufacturing to predict equipment failures (e.g., GE's Predix).": "პროგნოზული ტექნიკური მომსახურების AI: AI სისტემები, რომლებიც გამოიყენება წარმოებაში აღჭურვილობის გაუმართაობის პროგნოზირებისთვის (მაგ., GE's Predix).",
+  "Conversational Agents: AI systems that interact with users via text or voice, providing assistance or information.": "საუბრის აგენტები: AI სისტემები, რომლებიც ურთიერთობენ მომხმარებლებთან ტექსტის ან ხმით, proporcionando დახმარებას ან ინფორმაციულ ნივთებს.",
+  "Procedural Content Generation: AI algorithms that automatically create game content, such as levels.": "პროგნოზული შინაარსის გენერაცია: AI ალგორითმები, რომლებიც ავტომატურად ქმნიან თამაშების შინაარსს, მაგალითად, დონეებს.",
+  "Diagnostic AI: Tools that assist in diagnosing diseases based on medical data.": "დიაგნოსტიკური AI: ინსტრუმენტები, რომლებიც ეხმარება დაავადებების დიაგნოზირებაში სამედიცინო მონაცემების საფუძველზე.",
+  "Fraud Detection: AI systems that analyze transactions to identify potentially fraudulent activity.": "ფრაუდის აღმოჩენა: AI სისტემები, რომლებიც ანალიზებენ ტრანზაქციებს და იდენტიფიცირებენ პოტენციურ საეჭვო საქმიანობას.",
+  "Content Moderation: AI that identifies and removes inappropriate content on social media platforms.": "შინაარსის მოდერაცია: AI, რომელიც ამოიცნობს და აკვირდება არასწორ შინაარსს სოციალური მედიის პლატფორმებზე.",
+  "Predictive Analytics for Marketing: AI that analyzes data to predict consumer behavior and marketing effectiveness.": "პროგნოზული ანალიტიკა მარკეტინგისთვის: AI, რომელიც ანალიზებს მონაცემებს მომხმარებლის ქცევის და მარკეტინგული ეფექტურობის პროგნოზირებისთვის."
+}

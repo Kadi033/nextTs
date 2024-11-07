@@ -1,14 +1,14 @@
-import chatbot from "../../public/chatbot.jpg";
-import designer from "../../public/designer.jpg";
-import developer from "../../public/developer.jpg";
-import enginer from "../../public/enginer.jpg";
-import Financial from "../../public/Financial.jpg";
-import gaming from "../../public/gaming.jpg";
-import health from "../../public/health.jpg";
-import marketing from "../../public/marketing.jpg";
-import social from "../../public/social.webp";
-import MainElement from "../components/mainElement/MainElement";
-
+import { getDictionary } from './dictionaries';
+import MainElement from "../../components/mainElement/MainElement";
+import chatbot from "../../../public/chatbot.jpg";
+import designer from "../../../public/designer.jpg";
+import developer from "../../../public/developer.jpg";
+import enginer from "../../../public/enginer.jpg";
+import Financial from "../../../public/Financial.jpg";
+import gaming from "../../../public/gaming.jpg";
+import health from "../../../public/health.jpg";
+import marketing from "../../../public/marketing.jpg";
+import social from "../../../public/social.webp";
 const mainInfo = [
   {
     id: 1,
@@ -75,16 +75,18 @@ const mainInfo = [
   },
 ];
 
-export default function Home() {
+export default async function Home({ params: { lang } }) {
+  const dict = await getDictionary(lang);
+
   return (
     <div className="flex flex-col justify-center items-center py-10 transition-colors duration-300 bg-slate-100 text-black dark:bg-gray-800 dark:text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-full p-5">
-        {mainInfo.map((product) => (
+        {mainInfo.map(({ id, title, description, image }) => (
           <MainElement
-            key={product.id}
-            title={product.title}
-            description={product.description}
-            image={product.image}
+            key={id}
+            title={dict[title] || title}  
+            description={dict[description] || description} 
+            image={image}
           />
         ))}
       </div>
