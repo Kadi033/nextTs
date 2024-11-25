@@ -6,29 +6,9 @@ import Sort from "@/src/components/sort/Sort";
 import Search from "@/src/components/search/Search";
 import { cache } from "react";
 
-const getProduct = cache(async (query, sort) => {
-  let url = "https://dummyjson.com/products";
-
-  if (query) {
-    url = `https://dummyjson.com/products/search?q=${query}`; // &sortBy=price&order=asc გადაბმა
-  } else if (sort === "asc") {
-    url += "?sortBy=title&order=asc";
-  } else if (sort === "priceLowHigh") {
-    url += "?sortBy=price&order=asc";
-  } else if (sort === "priceHighLow") {
-    url += "?sortBy=price&order=desc";
-  }
-
+const getProduct = cache(async () => {
   try {
-    const productResponse = await axios.get(url);
-    const products = productResponse.data.products;
-
-    if (query) {
-      return products.filter((product) =>
-        product.title.toLowerCase().startsWith(query.toLowerCase())
-      );
-    }
-
+    const { data: products } = await axios.get(`${process.env.AUTH0_BASE_URL}/api/products`);
     return products;
   } catch (error) {
     console.error(error);
@@ -36,24 +16,23 @@ const getProduct = cache(async (query, sort) => {
   }
 });
 
-export default async function Page({ searchParams }) {
-  const { q: query, sort } = searchParams || {};
-  const products = await getProduct(query, sort);
-  
+export default async function Page({ params: { lang: locale } }) {
+  const products = await getProduct();
+
   return (
     <main className="outer-container">
       <Search />
       <Sort />
       <h1>Products</h1>
       <div className="container product-card">
-        {products.length > 0 ? (
-          products.map((product) => (
-            <Link href={`/product/${product.id}`} key={product.id}>
+        {products.length ? (
+          products.map(({ id, title_ka, title_en, description_ka, description_en, price, image }) => (
+            <Link href={`/${locale}/product/${id}`} key={id}>
               <ProductCard
-                title={product.title}
-                price={product.price}
-                image={product.thumbnail}
-                description={product.description}
+                title={locale === "ka" ? title_ka : title_en}
+                price={price}
+                image={image}
+                description={locale === "ka" ? description_ka : description_en}
               />
             </Link>
           ))

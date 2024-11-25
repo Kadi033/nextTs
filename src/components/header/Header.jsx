@@ -5,13 +5,23 @@ import Button from "../button/Button";
 import Image from "next/image";
 import { useTheme } from "@/src/provider/ThemeProvider";
 import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
   const { toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
+  const pathname = usePathname();
   const toggleDropdown = () => setIsOpen(!isOpen);
 
+  const changeLocale = (newLocale) => {
+    const newPath = pathname
+      .split("/")
+      .map((segment, index) => (index === 1 ? newLocale : segment))
+      .join("/");
+      router.replace(newPath);
+  };
+  
   return (
     <div
       className={`w-full mx-auto flex justify-between px-16 py-5 transition-colors duration-300 bg-slate-100 text-black dark:bg-gray-800 dark:text-white`}
@@ -25,46 +35,25 @@ export default function Header() {
           />
         </div>
         <nav className="flex items-center gap-10">
-          <Link
-            href="/"
-            className="hover:translate-y-1 hover:opacity-80 transition duration-200"
-          >
+          <Link href="/" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             Home
           </Link>
-          <Link
-            href="/about"
-            className="hover:translate-y-1 hover:opacity-80 transition duration-200"
-          >
+          <Link href="/about" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             About
           </Link>
-          <Link
-            href="/contact"
-            className="hover:translate-y-1 hover:opacity-80 transition duration-200"
-          >
+          <Link href="/contact" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             Contact
           </Link>
-          <Link
-            href="/assignment"
-            className="hover:translate-y-1 hover:opacity-80 transition duration-200"
-          >
+          <Link href="/assignment" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             Assignment-3
           </Link>
-          <Link
-            href="/blog"
-            className="hover:translate-y-1 hover:opacity-80 transition duration-200"
-          >
+          <Link href="/blog" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             Blog
           </Link>
-          <Link
-            href="/product"
-            className="hover:translate-y-1 hover:opacity-80 transition duration-200"
-          >
+          <Link href="/product" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             Products
           </Link>
-          <Link
-            href="/profile"
-            className="hover:translate-y-1 hover:opacity-80 transition duration-200"
-          >
+          <Link href="/profile" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             Profile
           </Link>
         </nav>
@@ -86,7 +75,14 @@ export default function Header() {
         <a href="/api/auth/logout">
           <Button text="Logout" width="100px" />
         </a>
-
+        <div className="flex flex-col p-2 gap-1">
+          <p onClick={() => changeLocale("ka")} className="cursor-pointer">
+            geo
+          </p>
+          <p onClick={() => changeLocale("en")} className="cursor-pointer">
+            eng
+          </p>
+        </div>
         <div className="relative inline-block text-left">
           <button
             onClick={toggleDropdown}
@@ -110,9 +106,7 @@ export default function Header() {
               </button>
               <button
                 onClick={() => {
-                  const newTheme = window.matchMedia(
-                    "(prefers-color-scheme: dark)"
-                  ).matches
+                  const newTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
                     ? "dark"
                     : "light";
                   toggleTheme(newTheme);

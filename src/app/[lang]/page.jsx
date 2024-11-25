@@ -81,6 +81,7 @@ export default async function Home({ params: { lang } }) {
   return (
     <div className="flex flex-col justify-center items-center py-10 transition-colors duration-300 bg-slate-100 text-black dark:bg-gray-800 dark:text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-full p-5">
+        <div>{dict.pro}</div>
         {mainInfo.map(({ id, title, description, image }) => (
           <MainElement
             key={id}
