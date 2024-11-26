@@ -1,10 +1,27 @@
+import React from "react";
 import axios from "axios";
 import "./Blog.css";
 import Link from "next/link";
 
-async function getPosts() {
+export interface Post {
+  id: number;
+  title_en: string;
+  title_ka: string;
+  body_en: string;
+  body_ka: string;
+}
+export interface BlogProps {
+  params: {
+    id: number;
+    lang: "en" | "ka";
+  };
+}
+
+async function getPosts(): Promise<Post[]> {
   try {
-    const { data: blog } = await axios.get(`http://localhost:3000/api/blog`);
+    const { data: blog } = await axios.get<Post[]>(
+      "http://localhost:3000/api/blog"
+    );
     return blog;
   } catch (error) {
     console.error(error);
@@ -12,7 +29,7 @@ async function getPosts() {
   }
 }
 
-export default async function Blog({ params: { lang: locale } }) {
+export default async function Blog({ params: { lang: locale } }: BlogProps) {
   const blog = await getPosts();
 
   return (

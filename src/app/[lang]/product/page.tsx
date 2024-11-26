@@ -1,28 +1,47 @@
-import ProductCard from "@/src/components/cards/ProductCard";
+import React from "react";
 import axios from "axios";
 import Link from "next/link";
 import "./products.css";
-import Sort from "@/src/components/sort/Sort";
-import Search from "@/src/components/search/Search";
+// import Sort from "@/src/components/sort/Sort";
+// import Search from "@/src/components/search/Search";
 import { cache } from "react";
+import ProductCard from '../../../components/cards/ProductCard';
 
-const getProduct = cache(async () => {
+export interface Product {
+  id: number;
+  title_ka: string;
+  title_en: string;
+  description_ka: string;
+  description_en: string;
+  price: number;
+  image: string;
+}
+
+export interface ProductProps {
+  params: {
+    lang: "en" | "ka";
+  };
+}
+
+// Cached data fetching for products
+const getProduct = cache(async (): Promise<Product[]> => {
   try {
-    const { data: products } = await axios.get(`${process.env.AUTH0_BASE_URL}/api/products`);
+    const { data: products } = await axios.get<Product[]>(`${process.env.AUTH0_BASE_URL}/api/products`);
     return products;
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching products:", error);
     return [];
   }
 });
 
-export default async function Page({ params: { lang: locale } }) {
+// React component for the product list page
+export default async function Page({ params: { lang: locale } }: ProductProps) {
   const products = await getProduct();
 
   return (
     <main className="outer-container">
-      <Search />
-      <Sort />
+      {/* <Search />
+      <Sort /> */}
       <h1>Products</h1>
       <div className="container product-card">
         {products.length ? (
