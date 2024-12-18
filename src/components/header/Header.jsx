@@ -53,6 +53,9 @@ export default function Header() {
           <Link href="/product" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             Products
           </Link>
+          <Link href="/stripe" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
+            Stripe
+          </Link>
           <Link href="/profile" className="hover:translate-y-1 hover:opacity-80 transition duration-200">
             Profile
           </Link>

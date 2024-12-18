@@ -22,9 +22,8 @@ function getLocale(request) {
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith("/api/")) {
-    return;
-  }
+  // Ignore API routes and paths that already have a locale
+  if (pathname.startsWith("/api/")) return;
 
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -32,11 +31,21 @@ export function middleware(request) {
 
   if (pathnameHasLocale) return;
 
+  // Ignore Stripe's success and cancel URLs
+  if (
+    pathname.startsWith("/donate-with-checkout/result") || 
+    pathname.startsWith("/donate-with-embedded-checkout/result")
+  ) {
+    return;
+  }
+
   const locale = getLocale(request);
   request.nextUrl.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
-  matcher: ["/((?!_next|api).*)"],
+  matcher: [
+    "/((?!_next|api|donate-with-checkout/result|donate-with-embedded-checkout/result).*)",
+  ],
 };
